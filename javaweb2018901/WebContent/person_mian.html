@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/public.css">
+<link rel="stylesheet" href="css/public2.css">
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/weather.js"></script>
+<title>普通用户界面</title>
+</head>
+
+<script type="text/javascript">
+    window.onload=function(){
+      $(".loading").hide();
+    }
+    document.write('<div class="loading"><div class="loader"><div class="loader_icn"><div class="loader_cut"><div class="loader_donut"></div></div></div><p>Loading...</p></div></div>');
+</script>
+<body>
+  <!-- <div id="loading" style="background:#CC4444;color:#FFF;width:80px;padding-left:5px;z-index:999;position:absolute;line-height:22px">正在读取...</div> -->
+
+  <!--loading-->
+<!-- <div class="loading">
+  <div class="loader">
+    <div class="loader_icn">
+      <div class="loader_cut">
+        <div class="loader_donut"></div>
+      </div>
+    </div>
+    <p>Loading...</p>
+  </div>
+</div> -->
+<!--//loading-->
+	<div class="container" id="particles-js">
+      <div class="nav">
+          <ul>
+              <li class="n_work"><img src="images1/icon15.png"></li>
+              <!-- 
+              <li><img src="images1/icon2.png"></li>
+              <li><img src="images1/icon3.png"></li>
+              <li><img src="images1/icon4.png"></li>
+              <li><img src="images1/icon5.png"></li>
+              <li><img src="images1/icon6.png"></li>
+              <li><img src="images1/icon7.png"></li>
+              <li class="n_notices"><img src="images1/icon8.png"></li>
+              <li class="n_lock"><img src="images1/icon9.png"></li>
+              <li><img src="images1/icon10.png"></li>
+              <li><img src="images1/icon11.png"></li>
+              <li><img src="images1/icon12.png"></li>
+              <li><img src="images1/icon14.png"></li>
+              <li><img src="images1/icon15.png"></li> -->
+              
+              <li class="n_photo"><img src="images1/icon13.png"></li>
+              <li><A href="logoutPersonServlet"><img src="images1/icon6.png"></A></li> 
+          </ul>
+      </div>
+      <div class="photo animated">
+          <div class="photo_exit">X</div>
+          <div class="title">精选壁纸</div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg3.jpg">
+          </div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg41.jpg">
+          </div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg5.jpg">
+          </div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg6.jpg">
+          </div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg7.jpg">
+          </div>
+          <div class="small_pic">
+            <div class="img_cover">
+              <span class="progress"></span>
+            </div>
+            <img src="images1/bg8.jpg">
+          </div>
+      </div>
+      <div class="notice">
+          <div class="n_x">X</div>
+          <div class="notice_title">温馨提示</div>
+          <div class="notice_content">
+            <ul>
+              <li>1.本网站采用全屏模式</li>
+              <li>2.可通过ESC退出全屏</li>
+              <li>3.建议全屏浏览，效果更佳</li>
+              <li>4.作品归lafitewu所有</li>
+              <li>5.未经本人允许，严禁商用</li>
+            </ul>
+          </div>
+      </div>
+     <!--   <div class="works animated">
+      
+     <div class="works animated">
+        <ul>
+         <li class="animated"> 
+            <div class="w_x">X</div>
+          <!--    <div class="w_font">后台注册页面</div>
+              <form  action="ShowStudentperson.jsp">
+	         <input name="submit" type="submit" value="个人信息更新" class="text-but" style="height:60px; width:200px;color:red;setBackground(Color.blue)">
+	         </form>
+	         </li>
+	   <li class="animated">
+	       <div class="w_x">X</div>
+	         <form  action="showBookpersonServlet">
+	         <input name="submit" type="submit" value="查看所有图书信息" class="text-but" style="height:60px; width:200px">
+	         </form>
+	         </li>
+	       <li class="animated">
+	       <div class="w_x">X</div>
+	         <form  action="ShowBorrowBookperson.jsp">
+	         <input name="submit" type="submit" value="查询个人图书借阅信息" class="text-but" style="height:60px; width:200px">
+	         </form>
+	         </li>
+	         </ul>
+	         
+	         </div> 
+	          -->
+	         
+	         
+   <div class="works animated">
+        <ul>
+          <li class="animated">
+            <div class="w_x">X</div>
+            <div class="w_font">个人信息更新</div>
+            <div class="w_content animated">
+                 <form  action="ShowStudentperson.jsp">
+	         <input name="submit" type="submit" value="点击修改" class="text-but" style="height:60px; width:200px">
+	         <img src="./images1/work3.png"></form>
+            </div>
+          </li>
+          <li class="animated">
+            <div class="w_x">X</div>
+            <div class="w_font">查看图书信息</div>
+            <div class="w_content animated">
+                 <form  action="showBookpersonServlet">
+	         <input name="submit" type="submit" value="点击查询" class="text-but" style="height:60px; width:200px">
+	        <img src="./images1/work2.jpg"></a>
+             </form></div>
+          </li>
+          <li class="animated">
+            <div class="w_x">X</div>
+            <div class="w_font">查询个人借阅信息</div>
+            <div class="w_content animated">
+              <form  action="ShowBorrowBookperson.jsp">
+	         <input name="submit" type="submit" value="点击查询" class="text-but" style="height:60px; width:200px">
+	         <img src="./images1/work.png"></form>
+            </div>
+          </li>
+        </ul>
+      </div>
+</div>
+<script>
+  $(function() {
+    //本地存储功能
+    var storage = window.localStorage;
+    if(storage.url) {
+        $(".container").css({"background":"url("+storage.url+") no-repeat center","background-size":"100%"});
+    }
+    function requestFullScreen(element) {
+     // 判断各种浏览器，找到正确的方法
+     var requestMethod = element.requestFullScreen || //W3C
+     element.webkitRequestFullScreen || //Chrome等
+     element.mozRequestFullScreen || //FireFox
+     element.msRequestFullScreen; //IE11
+     if (requestMethod) {
+      requestMethod.call(element);
+     }
+     else if (typeof window.ActiveXObject !== "undefined") {//for Internet Explorer
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+       wscript.SendKeys("{F11}");
+      }
+     }
+    }
+    $("body").contextmenu(function() {  
+      return false;
+    });
+    $("body").click(function() {requestFullScreen(document.documentElement)}); 
+    function pclock() {
+      this.dom = $(".input input");
+      this.Animate = ["zoomOutDown","bounce","fadeInDown","lightSpeedIn","lightSpeedOut","flipInY","rotateOut","bounceInUp"];
+    };
+    pclock.prototype = {
+        Class:function(a,b,c) {
+          $(a).show().addClass(b);
+          $(a).removeClass(c);
+        },
+        Notice:function(a,b,c) {
+          if(c) {
+            $(a).slideDown(b);
+          }else{
+            $(a).slideUp(b);
+          }
+        },
+        
+        //锁屏
+        lockClick:function() {
+             this.dom.blur(function() {
+                Lock.Class(this,"",Lock.Animate[1]);
+                Lock.yanzhen();
+              });
+              $(window).keydown(function(a) {
+                Lock.Class(".input input","",Lock.Animate[1]);
+                if(a.which == 13) {
+                  Lock.yanzhen();
+                }
+              })
+              $(".n_lock").click(function() {
+                  Lock.dom.val("");
+                  Lock.dom.attr({"placeholder":"请输入密码"});
+                  Lock.Class(".lock",Lock.Animate[2],Lock.Animate[0]);
+              })
+        },
+        photoClick:function(dom,a,b,c) {
+            $(dom).click(function() {
+                Lock.Class(a,b,c);
+            });
+        },
+        //设置壁纸
+        setPhoto:function() {
+            $(".small_pic").click(function() {
+                var that = $(this);
+                $(".img_cover").addClass("animated");
+                $(".img_cover").hide().removeClass("rotateIn");
+                $(this).find(".img_cover").show().addClass("rotateIn");
+                $(this).find(".progress").css("width","0%").stop().animate({
+                    width: "100%"
+                },5000,function() {
+                    var imgUrl = that.find("img").attr("src");
+                    $(".container").css({"background":"url("+imgUrl+") no-repeat center","background-size":"100%"});
+                    storage.url = imgUrl; // 把最后设置的壁纸存储到localstorage
+                });
+            });
+        },
+        NoticeClose:function(a,b) {
+            $(a).click(function() {
+                Lock.Notice(".notice",1000,b);
+            });
+        },
+        //作品
+        Work:function() {
+            //初始化
+            function Zero() {
+              $(".works ul li").css("width","98px").stop();
+              $(".w_x").hide();
+              $(".w_font").show();
+              $(".w_content").removeClass(Lock.Animate[7]).hide(500);
+            };
+            $(".n_work").click(function() {
+                Lock.Class(".works","",Lock.Animate[6]);
+                Lock.Class(".works ul li",Lock.Animate[5]);
+                Zero();
+            });
+            $(".works ul li").click(function() {
+                //此判断==防止冒泡
+                if($(this).width() != "571") {
+                  Zero();
+                  var that = $(this);
+                  $(this).find(".w_x").show();
+                  $(this).find(".w_font").fadeOut(500);
+                  $(this).animate({"width":"60%"},1000,function() {
+                    that.find(".w_content").show().addClass(Lock.Animate[7]);
+                  });
+                }
+            });
+            $(".w_x").click(function() {
+                $(".works").addClass(Lock.Animate[6]).hide(1000);
+            });
+        }
+      }
+      var Lock = new pclock();
+      Lock.lockClick();
+      Lock.photoClick(".n_photo",".photo",Lock.Animate[3],Lock.Animate[4]);
+      Lock.photoClick(".photo_exit",".photo",Lock.Animate[4],Lock.Animate[3]);
+      Lock.setPhoto();
+      Lock.NoticeClose(".n_x");
+      Lock.NoticeClose(".n_notices",1);
+      Lock.Work();
+}); 
+</script>
+<script src="js/particles.min.js"></script>
+<script src="js/zhuti1.js"></script>
+
+
+</body>
+</html>

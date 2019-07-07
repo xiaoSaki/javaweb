@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<display-name>javaweb2018901</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 2018.05.11 -->
+    <jsp-config>
+    	<taglib>
+    	<taglib-uri>/mytags</taglib-uri>
+    	<taglib-location>/WEB-INF/tlds/mytags.tld</taglib-location>
+    	</taglib>
+    	<!-- 2018.05.15 -->
+    	<taglib>
+    	<taglib-uri>/jstlc</taglib-uri>
+    	<taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+    	</taglib>
+    	<taglib>
+    	<taglib-uri>/jstlsql</taglib-uri>
+    	<taglib-location>/WEB-INF/tlds/sql.tld</taglib-location>
+    	</taglib>	
+    </jsp-config>
+    
+    
+    <!-- 2018.4.13 -->
+    <servlet>
+        <servlet-name>loginservlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.loginservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginservlet</servlet-name>
+        <url-pattern>/loginservlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018.4.18 -->
+    <filter>
+    <filter-name>AuthorityFilter</filter-name>
+    <filter-class>en.edu.lingnan.Filter.AuthorityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    <filter-name>AuthorityFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- 2018.4.20 -->
+    <servlet>
+        <servlet-name>Registerservlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.registerservlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Registerservlet</servlet-name>
+        <url-pattern>/registerservlet</url-pattern>
+    </servlet-mapping>
+    
+     <!-- 2018.4.27 -->
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/admin/logoutServlet</url-pattern>
+    </servlet-mapping>   
+    
+     <servlet>
+        <servlet-name>LogoutPersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.logoutPersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutPersonServlet</servlet-name>
+        <url-pattern>/logoutPersonServlet</url-pattern>
+    </servlet-mapping> 
+    
+     <!-- 2018.5.04 -->
+    <servlet>
+        <servlet-name>FindAlluserServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findAlluserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindAlluserServlet</servlet-name>
+        <url-pattern>/admin/findAlluserServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018.5.08 -->
+    <servlet>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.deleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/admin/deleteUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/admin/updateUserServlet</url-pattern>
+    </servlet-mapping>
+   
+    
+    
+    <!-- 2018.5.23 -->
+    <servlet>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.deleteStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <url-pattern>/admin/deleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018.5.29 -->
+    <servlet>
+        <servlet-name>deleteStudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.DeleteStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteStudentServlet</servlet-name>
+        <url-pattern>/admin/DeleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018.5.29 -->
+    <servlet>
+        <servlet-name>UpdateStudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updateStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateStudentServlet</servlet-name>
+        <url-pattern>/admin/updateStudentServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018.5.29 -->
+    <servlet>
+        <servlet-name>addstudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.AddstudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addstudentServlet</servlet-name>
+        <url-pattern>/admin/AddstudentServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 2018.5.29 -->
+        <servlet>
+        <servlet-name>FindAllStudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findAllStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindAllStudentServlet</servlet-name>
+        <url-pattern>/admin/findAllStudentServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018-05-30 -->
+    <servlet>
+        <servlet-name>deletecheckServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.DeletecheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deletecheckServlet</servlet-name>
+        <url-pattern>/admin/DeletecheckServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>deleteBookcheckServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.DeleteBookcheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteBookcheckServlet</servlet-name>
+        <url-pattern>/admin/DeleteBookcheckServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>deleteBorrowBookcheckServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.DeleteBorrowBookcheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteBorrowBookcheckServlet</servlet-name>
+        <url-pattern>/admin/DeleteBorrowBookcheckServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>deleteStucheckServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.DeleteStucheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteStucheckServlet</servlet-name>
+        <url-pattern>/admin/DeleteStucheckServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!-- 2018-5-30 -->
+    <servlet>
+        <servlet-name>UpdateBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updateBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateBookServlet</servlet-name>
+        <url-pattern>/admin/updateBookServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>FindallBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findallBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindallBookServlet</servlet-name>
+        <url-pattern>/admin/findallBookServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.deleteBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <url-pattern>/admin/deleteBookServlet</url-pattern>
+    </servlet-mapping>  
+    <!-- 2018-5-30-pm -->
+    <servlet>
+        <servlet-name>FindAllBorrowBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findAllBorrowBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindAllBorrowBookServlet</servlet-name>
+        <url-pattern>/admin/findAllBorrowBookServlet</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+        <servlet-name>DeleteBorrowBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.deleteBorrowBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBorrowBookServlet</servlet-name>
+        <url-pattern>/admin/deleteBorrowBookServlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>UpdateBorrowBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updateBorrowBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateBorrowBookServlet</servlet-name>
+        <url-pattern>/admin/updateBorrowBookServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018-5-30-evening -->
+     <servlet>
+        <servlet-name>AdduserServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.adduserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdduserServlet</servlet-name>
+        <url-pattern>/admin/adduserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FinduserByIdServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.finduserByIdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FinduserByIdServlet</servlet-name>
+        <url-pattern>/admin/finduserByIdServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 2018-5-31 -->
+    <servlet>
+        <servlet-name>AddstudentServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.AddstudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddstudentServlet</servlet-name>
+        <url-pattern>/admin/addstudentServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>FindstudentByIdServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findstudentByIdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindstudentByIdServlet</servlet-name>
+        <url-pattern>/admin/findstudentByIdServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 2018-5-31-evening -->
+    <servlet>
+        <servlet-name>FindBookByidServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findBookByidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindBookByidServlet</servlet-name>
+        <url-pattern>/admin/findBookByidServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 2018-6-1-am -->
+    <servlet>
+        <servlet-name>FindBorrowbookByidServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findBorrowbookByidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindBorrowbookByidServlet</servlet-name>
+        <url-pattern>/admin/findBorrowbookByidServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddBorrowBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.AddBorrowBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBorrowBookServlet</servlet-name>
+        <url-pattern>/admin/addBorrowBookServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddBookServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.AddBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBookServlet</servlet-name>
+        <url-pattern>/admin/addBookServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 2018-6-1-evening -->
+     <servlet>
+        <servlet-name>FindpersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.findpersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindpersonServlet</servlet-name>
+        <url-pattern>/findpersonServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 2018-6-2 -->
+     <servlet>
+        <servlet-name>UpdateUserpwd</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updateUserpwd</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserpwd</servlet-name>
+        <url-pattern>/updateUserpwd</url-pattern>
+    </servlet-mapping>
+    <!-- 2018-6-3 -->
+       <servlet>
+        <servlet-name>AddpersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.AddpersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddpersonServlet</servlet-name>
+        <url-pattern>/addpersonServlet</url-pattern>
+    </servlet-mapping>
+    
+       <servlet>
+        <servlet-name>UpdatepersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.updatepersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatepersonServlet</servlet-name>
+        <url-pattern>/updatepersonServlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ShowBookpersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.showBookpersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowBookpersonServlet</servlet-name>
+        <url-pattern>/showBookpersonServlet</url-pattern>
+    </servlet-mapping>
+    
+     <!-- 2018-6-5 -->
+       <servlet>
+        <servlet-name>ShowBookByidPersonServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.showBookByidPersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowBookByidPersonServlet</servlet-name>
+        <url-pattern>/showBookByidPersonServlet</url-pattern>
+    </servlet-mapping>   
+    
+    <!-- 2018-6-5 -->
+       <servlet>
+        <servlet-name>BorrowBook_personServlet</servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.BorrowBook_personServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BorrowBook_personServlet</servlet-name>
+        <url-pattern>/borrowBook_personServlet</url-pattern>
+    </servlet-mapping>     
+    
+     <servlet>
+        <servlet-name>ReturnBookPersonServlet </servlet-name>
+        <servlet-class>en.edu.lingnan.servlet.ReturnBookPersonServlet </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReturnBookPersonServlet </servlet-name>
+        <url-pattern>/returnBookPersonServlet </url-pattern>
+    </servlet-mapping> 
+    
+</web-app>
