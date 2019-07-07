@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- font files  -->
+<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+<!-- /font files  -->
+<!-- css files -->
+<link href="css/style2.css" rel='stylesheet' type='text/css' media="all" />
+<!-- /css files -->
+</head>
+<script >
+function check(){
+	if(form.userid.value==""){
+		alert("用户ID不能为空");
+		form.userid.focus();
+		return false;
+	}
+	if(form.username.value=="请输入用户名"){
+		alert("用户名不能为空");
+		form.username.focus();
+		return false;
+	}
+	var regm1= /^([\u4e00-\u9fa5 ]||[a-zA-Z_]){2,7}$/
+	//var regm1= /^[a-zA-Z_]+[a-zA-Z0-9]+$/
+	if(!form.username.value.match(regm1)){
+		alert("用户名输入不合法，请输入2-7位中文或者字母");
+		//alert("用户名输入不合法，请以字母或下划线开头");
+		form.username.focus();
+		return false;
+	}
+	if(form.userpassword.value=="请输入密码"){
+		alert("用户密码不能为空");
+		form.userpassword.focus();
+		return false;
+	}
+	if(form.usersex.value=="请输入性别"){
+		alert("性别不能为空");
+		form.usersex.focus();
+		return false;
+	}
+	var regm3= /^([\u4e00-\u9fa5])?$/
+		if(!form.usersex.value.match(regm3)){
+			alert("性别输入不合法，请输入男或女");
+			form.usersex.focus();
+			return false;
+		}
+	
+	if(form.userAuth.value=="请输入权限"){
+		alert("用户权限不能为空");
+		form.userAuth.focus();
+		return false;
+	}
+	var regm1= /^[2-3]?$/
+		if(!form.userAuth.value.match(regm1)){
+			alert("用户权限输入不合法，请输入数字2或3");
+			form.userAuth.focus();
+			return false;
+		}
+}
+function createXmlHttpRequest(){
+    var xmlreq = false;
+    if (window.XMLHttpRequest){
+        xmlreq = new XMLHttpRequest();
+    }else
+        if (window.ActiveXObject){
+    	try{
+    	    xmlreq = new ActiveXObject("Msxml2.XMLHTTP");
+    	}catch(e1){
+    	    try{
+    	        xmlreq = new ActiveXObject("Microsoft.XMLHTTP");
+    	    }catch(e2){
+    	    }
+    	}
+    }
+    return xmlreq;   	
+}
+
+
+function userIdCheck(){ //当失去焦点时，会触发这个函数 
+    var request = createXmlHttpRequest();//创建对象
+    var userid = document.all.userid.value;//获取userid的值
+    request.open("post","userIdCheckServlet?userid="+userid);//调用后台的servlet,要去web.xml里面写配置，然后写IdCheckServlet.java
+    request.send();
+    request.onreadystatechange = function(){
+	if(request.readyState==4){
+	        var value = request.responseText;
+	        if(value=="true"){
+	                alert("该用户ID已存在");
+	                form.userid.focus();
+	                return false;
+	        }
+    	}
+    }
+}
+
+</script>
+<body>
+
+<div class="log">
+
+	<div class="content2">
+		<h2>高校排课管理系统</h2>
+		<form action="registerServlet" name="form">
+			<input type="text" name="userid" value="请输入用户ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入用户ID';}">
+			<input type="tel" name="username" value="请输入用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入用户名';}">
+			<input type="password" name="userpassword" value="请输入密码" placeholder="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入密码';}">
+			<input type="text" name="usersex" value="请输入性别" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入性别';}">
+			<input type="text" name="userAuth" value="请输入权限" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入权限';}">
+			<input type="submit" onClick="return check();"class="register" value="注册">
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="footer">
+	
+</div>
+
+</body>
+</html>
