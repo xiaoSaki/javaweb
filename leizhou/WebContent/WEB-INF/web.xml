@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>leizhou</display-name>
+  
+  <!-- 配置首页为一个servlet,注意这里不加斜杠 -->
+<!--   <welcome-file-list>
+    <welcome-file>User/Index</welcome-file>
+  </welcome-file-list> -->
+    <welcome-file-list>
+    <welcome-file>login_register.html</welcome-file>
+  </welcome-file-list>
+  
+ <!-- 配置静态资源 -->
+  <servlet>
+    <servlet-name>default</servlet-name>
+    <servlet-class>
+          org.apache.catalina.servlets.DefaultServlet
+        </servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>*.jpg</url-pattern>
+    <url-pattern>*.png</url-pattern>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  
+ <!-- 编码过滤器 -->
+<filter>
+		<filter-name>SetCharacterEncodingFilter</filter-name>
+		<filter-class>com.neuedu.lvcity.Filter.SetCharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetCharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+
+<!-- 权限过滤 -->
+
+ <filter>
+    <filter-name>AuthorityFilter</filter-name>
+    <filter-class>com.neuedu.lvcity.Filter.AuthorityFilter</filter-class>
+ </filter>
+    <filter-mapping>
+    <filter-name>AuthorityFilter</filter-name>
+    <url-pattern>/Admin/*</url-pattern>
+    </filter-mapping>
+  
+   <!-- 配置servlet -->
+  <servlet>
+    <description></description>
+    <display-name>IndexServlet</display-name>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/User/Index</url-pattern>
+  </servlet-mapping>
+  
+  
+ <!-- 2018-7-22 美食 -->
+ <servlet>
+    <servlet-name>foodServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.FoodServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>foodServlet</servlet-name>
+    <url-pattern>/User/Food</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 2018-7-22 动态 -->
+ <servlet>
+    <servlet-name>NoticeServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.NoticeServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>NoticeServlet</servlet-name>
+    <url-pattern>/User/Notice</url-pattern>
+  </servlet-mapping>
+  <!-- 2019-4-3 风景 -->
+  <servlet>
+    <description></description>
+    <display-name>ScenicServlet</display-name>
+    <servlet-name>ScenicServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.ScenicServlet</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>ScenicServlet</servlet-name>
+    <url-pattern>/User/Scenic</url-pattern>
+  </servlet-mapping>
+  
+ <!-- 2019-4-3 团队 -->
+ <servlet>
+	  <description></description>
+	  <display-name>TeamServlet</display-name>
+	  <servlet-name>TeamServlet</servlet-name>
+	  <servlet-class>com.neuedu.lvcity.servlet.TeamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>TeamServlet</servlet-name>
+	  <url-pattern>/User/Team</url-pattern>
+	</servlet-mapping>
+	
+	 <!-- 2019-4-3 联系我们 -->
+	<servlet>
+	  <description></description>
+	  <display-name>ContactServlet</display-name>
+	  <servlet-name>ContactServlet</servlet-name>
+	  <servlet-class>com.neuedu.lvcity.servlet.ContactServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ContactServlet</servlet-name>
+	  <url-pattern>/User/Contact</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 2019-4-3  历史 -->
+  <servlet>
+    <servlet-name>HistoricServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.HistoricServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoricServlet</servlet-name>
+    <url-pattern>/historic/show.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HistoricShowListServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.HistoricShowListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoricShowListServlet</servlet-name>
+    <url-pattern>/historic/showlist.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HistoricTextServlet</servlet-name>
+    <servlet-class>com.neuedu.lvcity.servlet.HistoricTextServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoricTextServlet</servlet-name>
+    <url-pattern>/historic/watch.do</url-pattern>
+  </servlet-mapping>
+	
+	
+	
+  <!-- 留言主页  -->
+    <servlet>
+      <servlet-name>LeaveServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.LeaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>LeaveServlet</servlet-name>
+      <url-pattern>/User/Leave</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 用户登录 -->
+  	<servlet>
+      <servlet-name>LoginServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>LoginServlet</servlet-name>
+      <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 注销 -->
+     <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.neuedu.lvcity.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Admin/logoutServlet</url-pattern>
+    </servlet-mapping> 
+    
+      <servlet>
+        <servlet-name>UserLogoutServlet</servlet-name>
+        <servlet-class>com.neuedu.lvcity.servlet.UserLogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserLogoutServlet</servlet-name>
+        <url-pattern>/userLogoutServlet</url-pattern>
+    </servlet-mapping> 
+    
+  	<!-- 用户注册 -->
+  	<servlet>
+      <servlet-name>RegisterServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>RegisterServlet</servlet-name>
+      <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 后台 -->
+	  <!-- 用户管理 -->
+  	<servlet>
+      <servlet-name>UserManageServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.UserManageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>UserManageServlet</servlet-name>
+      <url-pattern>/Admin/userManageServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 公告 -->
+    <servlet>
+      <servlet-name>AdmNoticeServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmNoticeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmNoticeServlet</servlet-name>
+      <url-pattern>/Admin/admNoticeServlet</url-pattern>
+    </servlet-mapping>
+    
+       <!-- 公告类型 -->
+    <servlet>
+      <servlet-name>AdmNoticeTypeServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmNoticeTypeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmNoticeTypeServlet</servlet-name>
+      <url-pattern>/Admin/admNoticeTypeServlet</url-pattern>
+    </servlet-mapping>
+    
+          <!-- 团队类型 -->
+    <servlet>
+      <servlet-name>AdmTeamServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmTeamServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmTeamServlet</servlet-name>
+      <url-pattern>/Admin/admTeamServlet</url-pattern>
+    </servlet-mapping>
+    
+           <!--  导航 -->
+    <servlet>
+      <servlet-name>AdmBanarServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmBanarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmBanarServlet</servlet-name>
+      <url-pattern>/Admin/admBanarServlet</url-pattern>
+    </servlet-mapping>
+    
+           <!--文章类型 -->
+    <servlet>
+      <servlet-name>AdmArticletypeServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmArticletypeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmArticletypeServlet</servlet-name>
+      <url-pattern>/Admin/admArticletypeServlet</url-pattern>
+    </servlet-mapping>
+    
+              <!--文章 -->
+    <servlet>
+      <servlet-name>AdmArticleServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmArticleServlet</servlet-name>
+      <url-pattern>/Admin/admArticleServlet</url-pattern>
+    </servlet-mapping>
+    
+     <!--联系-->
+    <servlet>
+      <servlet-name>AdmContactServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.AdmContactServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>AdmContactServlet</servlet-name>
+      <url-pattern>/Admin/admContactServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 用户管理 -->
+  	<!-- <servlet>
+      <servlet-name>UserManageServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.UserManageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>UserManageServlet</servlet-name>
+      <url-pattern>/Admin/userManageServlet</url-pattern>
+    </servlet-mapping> -->
+    
+    <!-- 美食管理 -->
+    <servlet>
+      <servlet-name>FoodManageServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.FoodManageServlet</servlet-class>
+	<init-param>
+		<param-name>savePath</param-name>
+		<param-value>images/food</param-value>
+	</init-param>   
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>FoodManageServlet</servlet-name>
+      <url-pattern>/Admin/foodManageServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 景点管理 -->
+    <servlet>
+      <servlet-name>ScenicManageServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.ScenicManageServlet</servlet-class>
+	<init-param>
+		<param-name>savePath</param-name>
+		<param-value>images/scenic</param-value>
+	</init-param>   
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>ScenicManageServlet</servlet-name>
+      <url-pattern>/Admin/scenicManageServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 留言管理 -->
+    <servlet>
+      <servlet-name>MessageManageServlet</servlet-name>
+      <servlet-class>com.neuedu.lvcity.servlet.MessageManageServlet</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>MessageManageServlet</servlet-name>
+      <url-pattern>/Admin/messageManageServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
