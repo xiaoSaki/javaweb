@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 目前照抄 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+<package name="p2" extends="struts-default">
+		<interceptors>
+			<interceptor name="checkLogin"
+				class="myInterceptor.MyintercerptCheckLogin2">
+				<!-- 过滤哪个方法 一定要继承 MethodFilterInterceptor 重写doIntercept-->
+			</interceptor>
+			<interceptor-stack name="myDefaultStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="checkLogin"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+		<global-results>
+			<result name="input">/login.jsp</result>
+		</global-results>
+		<action name="hello" class="com.itheima.web.action.LoginAction"
+			method="loginAction">
+			<interceptor-ref name="myDefaultStack">
+			<!-- 引用默认的自定义拦截器的时候，选不过滤的Action进行引入 注意，此时引入的是一个组合的拦截器
+			到底是哪一个真正发挥作用，param 引入的就是哪一个  -->
+				<param name="checkLogin.excludeMethods">loginAction</param>
+			</interceptor-ref>
+			<result name="success" type="redirectAction">main</result>
+		</action>
+		<action name="showother" class="com.itheima.web.action.LoginAction">
+			<result name="success">/other.jsp</result>
+		</action>
+		<action name="main" class="com.itheima.web.action.LoginAction">
+			<result name="success">/main.jsp</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+	<!-- <action name="findAll" class="com.itheima.web.action.HelloAction" method="findAll">
+			<result name="success">/message.jsp</result>
+		
+		<result name="input">/success.jsp</result>
+		</action> -->
+
+
+
+		
+<!-- 拦截器 -->		
+<!--  声明拦截器 -->
+	 <!--  <interceptors >
+	    <interceptor name="check1" class="myInterceptor.Interceptor1">
+	    </interceptor>
+	  </interceptors>
+		<action name="hello" class="com.itheima.web.action.StudentAction" method="sayHello">
+		引入拦截器
+		<interceptor-ref name="check1">
+		</interceptor-ref>
+		<result name="success">/success.jsp</result>
+		</action> -->
+		
+	<!--简单拦截器 -->	
+<!-- <package name="p1" extends="struts-default">
+	 申明拦截器
+	<interceptors >
+	    <interceptor name="check1" class="myInterceptor.Logininterceptor">
+	    </interceptor>
+	  </interceptors>  
+	 声明全局视图
+	 <global-results>
+	    <result name = "input">/login.jsp</result>
+	 </global-results>
+	 
+	  <action name="hello" class="com.itheima.web.action.LoginAction" method="loginAction">
+	  <result name="success" type="redirectAction">show</result>
+	  </action>
+	
+	  <action name="show" class="com.itheima.web.action.LoginAction" method="loginAction">
+		引入拦截器
+		<interceptor-ref name="check1"></interceptor-ref>
+		<result name="success">/main.jsp</result>
+		</action>
+	   <action name="showother" class="com.itheima.web.action.LoginAction">
+		引入拦截器
+		<interceptor-ref name="check1"></interceptor-ref>
+		<result name="success">/other.jsp</result>
+		</action>
+		</package> -->

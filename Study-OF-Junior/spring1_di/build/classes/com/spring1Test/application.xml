@@ -1,0 +1,10 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 装配Bean -->
+	
+	<bean id="userIMPl" class="com.spring1.impl.userImpl"></bean>
+	<bean id="serivceImpl" class="com.spring1.impl.serivceImpl">
+	<property name="user" ref="userIMPl"></property></bean>
+</beans>

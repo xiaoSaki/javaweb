@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<!-- 用户名 -->
+<validators>
+  <field name="username">
+     <field-validator type="requiredstring">
+         <param name="trim">true</param>
+         <message>请填入用户名</message>
+   </field-validator>
+</field>
+
+<!-- 年龄 -->
+<field name="age">
+    <field-validator type="int">
+			<param name="min">18</param>
+			<param name="max">100</param>
+			<message>年龄必须在 ${min}和 ${max}之间</message>
+    </field-validator>
+</field>
+
+<!-- 邮箱-->
+<field name="email">
+	<field-validator type="email">
+			<message>请输入正确的邮箱</message>
+	</field-validator>
+</field>
+
+<!-- 密码 -->
+<field name="password">
+        <field-validator type="requiredstring">
+            <param name="trim">false</param>
+            <message>密码不能为空</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">3</param>
+            <param name="maxLength">8</param>
+            <message>密码长度必须在3--8位之间</message>
+        </field-validator>
+    </field>
+
+<!-- 重复密码 -->
+<!-- <field name="repassword">
+     <field-validator type="regex">
+         <param name="expression">
+        (password eq repassword)
+        </param>
+         <message>重复密码不正确</message>
+   </field-validator>
+< /field>-->
+
+<validator type="fieldexpression">
+    <param name="fieldName">repassword</param>
+    <param name="expression"><![CDATA[(repassword==password)]]></param>
+       <message>密码和确认密码必须一致</message>
+</validator>
+
+<!-- 成绩 -->
+<field name="score">
+        <field-validator type="int">
+              <param name="min">0</param>
+              <message>成绩必须是正整数</message>
+        </field-validator>
+</field>
+
+<!-- 个人主页 -->
+<field name="url">
+		<field-validator type="url">
+			<message>请输入正确的个人主页</message>
+		</field-validator>
+</field>
+
+<!-- 性别 -->
+<field name="gender">
+      <field-validator type="regex">
+              <param name="regex">
+                    <![CDATA[ gender=="男"|gender=="女"]]>
+              </param>
+         <message>请重新输入性别男或女</message>
+   </field-validator>
+</field>
+
+	
+</validators>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- constant name="struts.action.extension"用于修改后缀名 -->
+	<constant name="struts.action.extension" value="do"></constant>
+	<!-- constant name="struts.configuration.xml.reload"用于 修改配置文件是，不用重新启动，就可以响应 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+
+	<package name="mDefualt" extends="struts-default" abstract="true">
+		<result-types>
+			<result-type name="myValidate" class="com.itheima.web.action.HelloAction"></result-type>
+		</result-types>
+		<!-- 声明全局视图 -->
+		<global-results>
+			<result name="success" type="myValidate">
+				<param name="height">40</param>
+				<param name="width">300</param>
+			</result>
+		</global-results>
+	</package>
+	<package name="p1" extends="mDefualt">
+		<action name="valicodeTest"></action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	

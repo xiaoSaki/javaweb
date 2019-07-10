@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 装配Bean -->
+	
+	<!-- user的装配 -->
+   <!--  <bean id="user" class="com.Scope.User" init-method="initMethod" destroy-method="destoryMethod"></bean> -->
+    <bean id="user2" class="com.Scope.User">
+    <constructor-arg index="0" type="java.lang.String" value="lkl1">
+   </constructor-arg>
+    <constructor-arg index="1" type="java.lang.String" value="hjhj1">
+   </constructor-arg>
+    </bean>
+    
+    
+   <!--UserConstrunctDiTest的装配  -->
+   <bean id="user"  class="com.Scope.UserConstrunctDiTest">
+   <!-- index表示的是构造方法的第几个参数，value表示赋值，ref=""，表达引用数据类型，要引用的数据类型的bean id -->
+   <constructor-arg index="0" type="java.lang.Integer" value="1">
+   </constructor-arg>
+    <constructor-arg index="1" type="java.lang.String" value="2">
+   </constructor-arg>
+    <constructor-arg index="2" type="java.lang.String" value="男">
+   </constructor-arg>
+   <constructor-arg index="3" ref="user2">
+   </constructor-arg>
+   </bean>
+</beans>
+ 
