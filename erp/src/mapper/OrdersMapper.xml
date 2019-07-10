@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="po.Orders" >
+    <id column="oid" property="oid" jdbcType="VARCHAR" />
+    <result column="mid" property="mid" jdbcType="VARCHAR" />
+    <result column="eid" property="eid" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="omeney" property="omeney" jdbcType="DOUBLE" />
+    <result column="buyer" property="buyer" jdbcType="VARCHAR" />
+    <result column="handlerx" property="handlerx" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="buydate" property="buydate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oid, mid, eid, num, omeney, buyer, handlerx, tel, buydate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="po.OrdersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where oid = #{oid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where oid = #{oid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="po.OrdersExample" >
+    delete from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="po.Orders" >
+    insert into orders (oid, mid, eid, 
+      num, omeney, buyer, 
+      handlerx, tel, buydate
+      )
+    values (#{oid,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, #{eid,jdbcType=VARCHAR}, 
+      #{num,jdbcType=INTEGER}, #{omeney,jdbcType=DOUBLE}, #{buyer,jdbcType=VARCHAR}, 
+      #{handlerx,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{buydate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="po.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="omeney != null" >
+        omeney,
+      </if>
+      <if test="buyer != null" >
+        buyer,
+      </if>
+      <if test="handlerx != null" >
+        handlerx,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="buydate != null" >
+        buydate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="omeney != null" >
+        #{omeney,jdbcType=DOUBLE},
+      </if>
+      <if test="buyer != null" >
+        #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerx != null" >
+        #{handlerx,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="buydate != null" >
+        #{buydate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="po.OrdersExample" resultType="java.lang.Integer" >
+    select count(*) from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update orders
+    <set >
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mid != null" >
+        mid = #{record.mid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eid != null" >
+        eid = #{record.eid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.omeney != null" >
+        omeney = #{record.omeney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.buyer != null" >
+        buyer = #{record.buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handlerx != null" >
+        handlerx = #{record.handlerx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buydate != null" >
+        buydate = #{record.buydate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update orders
+    set oid = #{record.oid,jdbcType=VARCHAR},
+      mid = #{record.mid,jdbcType=VARCHAR},
+      eid = #{record.eid,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=INTEGER},
+      omeney = #{record.omeney,jdbcType=DOUBLE},
+      buyer = #{record.buyer,jdbcType=VARCHAR},
+      handlerx = #{record.handlerx,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      buydate = #{record.buydate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="po.Orders" >
+    update orders
+    <set >
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="omeney != null" >
+        omeney = #{omeney,jdbcType=DOUBLE},
+      </if>
+      <if test="buyer != null" >
+        buyer = #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerx != null" >
+        handlerx = #{handlerx,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="buydate != null" >
+        buydate = #{buydate,jdbcType=DATE},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.Orders" >
+    update orders
+    set mid = #{mid,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      omeney = #{omeney,jdbcType=DOUBLE},
+      buyer = #{buyer,jdbcType=VARCHAR},
+      handlerx = #{handlerx,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      buydate = #{buydate,jdbcType=DATE}
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+</mapper>

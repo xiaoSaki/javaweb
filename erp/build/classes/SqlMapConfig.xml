@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 取别名，或者别的其他全局配置信息，就在这里编写 -->
+    <typeAliases>
+        <!-- 别名为类名首字母大小写都可以 -->
+        <package name="po"/>
+    </typeAliases>
+    <!-- 原先这里还有连接数据库的一些配置，与spring整合后，都交由spring来管理 -->
+
+    <!-- 加载mapper映射文件,使用通用的配置 -->    
+    
+	<mappers>
+	    <package name="mapper"/>
+	</mappers>
+	
+</configuration>

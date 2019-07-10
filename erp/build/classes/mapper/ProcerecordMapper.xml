@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.ProcerecordMapper" >
+  <resultMap id="BaseResultMap" type="po.Procerecord" >
+    <id column="prid" property="prid" jdbcType="VARCHAR" />
+    <result column="mid" property="mid" jdbcType="VARCHAR" />
+    <result column="mnum" property="mnum" jdbcType="INTEGER" />
+    <result column="allmaterial" property="allmaterial" jdbcType="VARCHAR" />
+    <result column="procno" property="procno" jdbcType="INTEGER" />
+    <result column="prdate" property="prdate" jdbcType="DATE" />
+    <result column="producetime" property="producetime" jdbcType="INTEGER" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="eid" property="eid" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prid, mid, mnum, allmaterial, procno, prdate, producetime, place, eid, grade
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="po.ProcerecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from procerecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from procerecord
+    where prid = #{prid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from procerecord
+    where prid = #{prid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="po.ProcerecordExample" >
+    delete from procerecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="po.Procerecord" >
+    insert into procerecord (prid, mid, mnum, 
+      allmaterial, procno, prdate, 
+      producetime, place, eid, 
+      grade)
+    values (#{prid,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, #{mnum,jdbcType=INTEGER}, 
+      #{allmaterial,jdbcType=VARCHAR}, #{procno,jdbcType=INTEGER}, #{prdate,jdbcType=DATE}, 
+      #{producetime,jdbcType=INTEGER}, #{place,jdbcType=VARCHAR}, #{eid,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="po.Procerecord" >
+    insert into procerecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prid != null" >
+        prid,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="allmaterial != null" >
+        allmaterial,
+      </if>
+      <if test="procno != null" >
+        procno,
+      </if>
+      <if test="prdate != null" >
+        prdate,
+      </if>
+      <if test="producetime != null" >
+        producetime,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prid != null" >
+        #{prid,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=INTEGER},
+      </if>
+      <if test="allmaterial != null" >
+        #{allmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="procno != null" >
+        #{procno,jdbcType=INTEGER},
+      </if>
+      <if test="prdate != null" >
+        #{prdate,jdbcType=DATE},
+      </if>
+      <if test="producetime != null" >
+        #{producetime,jdbcType=INTEGER},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="po.ProcerecordExample" resultType="java.lang.Integer" >
+    select count(*) from procerecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update procerecord
+    <set >
+      <if test="record.prid != null" >
+        prid = #{record.prid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mid != null" >
+        mid = #{record.mid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.allmaterial != null" >
+        allmaterial = #{record.allmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procno != null" >
+        procno = #{record.procno,jdbcType=INTEGER},
+      </if>
+      <if test="record.prdate != null" >
+        prdate = #{record.prdate,jdbcType=DATE},
+      </if>
+      <if test="record.producetime != null" >
+        producetime = #{record.producetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.place != null" >
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eid != null" >
+        eid = #{record.eid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update procerecord
+    set prid = #{record.prid,jdbcType=VARCHAR},
+      mid = #{record.mid,jdbcType=VARCHAR},
+      mnum = #{record.mnum,jdbcType=INTEGER},
+      allmaterial = #{record.allmaterial,jdbcType=VARCHAR},
+      procno = #{record.procno,jdbcType=INTEGER},
+      prdate = #{record.prdate,jdbcType=DATE},
+      producetime = #{record.producetime,jdbcType=INTEGER},
+      place = #{record.place,jdbcType=VARCHAR},
+      eid = #{record.eid,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="po.Procerecord" >
+    update procerecord
+    <set >
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="mnum != null" >
+        mnum = #{mnum,jdbcType=INTEGER},
+      </if>
+      <if test="allmaterial != null" >
+        allmaterial = #{allmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="procno != null" >
+        procno = #{procno,jdbcType=INTEGER},
+      </if>
+      <if test="prdate != null" >
+        prdate = #{prdate,jdbcType=DATE},
+      </if>
+      <if test="producetime != null" >
+        producetime = #{producetime,jdbcType=INTEGER},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prid = #{prid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.Procerecord" >
+    update procerecord
+    set mid = #{mid,jdbcType=VARCHAR},
+      mnum = #{mnum,jdbcType=INTEGER},
+      allmaterial = #{allmaterial,jdbcType=VARCHAR},
+      procno = #{procno,jdbcType=INTEGER},
+      prdate = #{prdate,jdbcType=DATE},
+      producetime = #{producetime,jdbcType=INTEGER},
+      place = #{place,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR}
+    where prid = #{prid,jdbcType=VARCHAR}
+  </update>
+</mapper>

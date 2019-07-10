@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="po.Material" >
+    <id column="mid" property="mid" jdbcType="VARCHAR" />
+    <result column="mname" property="mname" jdbcType="VARCHAR" />
+    <result column="size" property="size" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="perprice" property="perprice" jdbcType="DOUBLE" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="isbuy" property="isbuy" jdbcType="INTEGER" />
+    <result column="issell" property="issell" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mid, mname, size, place, perprice, num, isbuy, issell
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="po.MaterialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from material
+    where mid = #{mid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from material
+    where mid = #{mid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="po.MaterialExample" >
+    delete from material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="po.Material" >
+    insert into material (mid, mname, size, 
+      place, perprice, num, 
+      isbuy, issell)
+    values (#{mid,jdbcType=VARCHAR}, #{mname,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{place,jdbcType=VARCHAR}, #{perprice,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, 
+      #{isbuy,jdbcType=INTEGER}, #{issell,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="po.Material" >
+    insert into material
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="mname != null" >
+        mname,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="perprice != null" >
+        perprice,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="isbuy != null" >
+        isbuy,
+      </if>
+      <if test="issell != null" >
+        issell,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="mname != null" >
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="perprice != null" >
+        #{perprice,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isbuy != null" >
+        #{isbuy,jdbcType=INTEGER},
+      </if>
+      <if test="issell != null" >
+        #{issell,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="po.MaterialExample" resultType="java.lang.Integer" >
+    select count(*) from material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update material
+    <set >
+      <if test="record.mid != null" >
+        mid = #{record.mid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mname != null" >
+        mname = #{record.mname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.size != null" >
+        size = #{record.size,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null" >
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perprice != null" >
+        perprice = #{record.perprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.isbuy != null" >
+        isbuy = #{record.isbuy,jdbcType=INTEGER},
+      </if>
+      <if test="record.issell != null" >
+        issell = #{record.issell,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update material
+    set mid = #{record.mid,jdbcType=VARCHAR},
+      mname = #{record.mname,jdbcType=VARCHAR},
+      size = #{record.size,jdbcType=VARCHAR},
+      place = #{record.place,jdbcType=VARCHAR},
+      perprice = #{record.perprice,jdbcType=DOUBLE},
+      num = #{record.num,jdbcType=INTEGER},
+      isbuy = #{record.isbuy,jdbcType=INTEGER},
+      issell = #{record.issell,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="po.Material" >
+    update material
+    <set >
+      <if test="mname != null" >
+        mname = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="perprice != null" >
+        perprice = #{perprice,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isbuy != null" >
+        isbuy = #{isbuy,jdbcType=INTEGER},
+      </if>
+      <if test="issell != null" >
+        issell = #{issell,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.Material" >
+    update material
+    set mname = #{mname,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      perprice = #{perprice,jdbcType=DOUBLE},
+      num = #{num,jdbcType=INTEGER},
+      isbuy = #{isbuy,jdbcType=INTEGER},
+      issell = #{issell,jdbcType=INTEGER}
+    where mid = #{mid,jdbcType=VARCHAR}
+  </update>
+</mapper>
